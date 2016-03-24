@@ -1,0 +1,6 @@
+main: io.github.lasercar.simplemention.SimpleMention
+author: Lasercar7
+website: https://github.com/lasercar/SimpleMention
+name: SimpleMention
+version: 0.0.1
+description: @Mention, with nickname, ping, and multiple mention support
