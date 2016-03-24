@@ -1,0 +1,46 @@
+group 'io.github.lasercar'
+version '0.0.1'
+
+apply plugin: 'java'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+configurations { providedCompile }
+
+sourceSets.main.compileClasspath += configurations.providedCompile
+sourceSets.test.compileClasspath += configurations.providedCompile
+sourceSets.test.runtimeClasspath += configurations.providedCompile
+
+jar {
+
+}
+
+shadowJar{
+    classifier = ""
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+
+    maven {
+        name 'Spigot'
+        url 'https://hub.spigotmc.org/nexus/content/groups/public/'
+    }
+
+    maven {
+        name 'BungeeCord'
+        url 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
+}
+
+dependencies {
+    providedCompile 'org.spigotmc:spigot-api:1.9-R0.1-SNAPSHOT'
+}
+
+buildscript {
+    repositories { jcenter() }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.1'
+    }
+}
