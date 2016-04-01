@@ -43,7 +43,7 @@ public class SimpleMention extends JavaPlugin implements Listener {
             Player player = event.getPlayer();
             Collection players = Bukkit.getOnlinePlayers();
 
-            Pattern pattern = Pattern.compile("(@\\w+)");
+            Pattern pattern = Pattern.compile("@(\\w+)");
             Matcher matcher = pattern.matcher(message);
 
             while (matcher.find()) {
