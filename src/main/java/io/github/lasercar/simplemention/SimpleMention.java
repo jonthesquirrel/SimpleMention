@@ -37,8 +37,6 @@ public class SimpleMention extends JavaPlugin implements Listener {
 //            while (matcher.find()) {
 //                String match = matcher.group(1);
 //
-//                Collection found = players.stream().filter(p -> p.getPlayerListName().contains(match) || p.getDisplayName().contains(match));
-//
 //                //TODO: partial matching of display name and username
 //                //TODO: only highlight mentions if found (prefix formatMention and suffix formatDefault)
 //

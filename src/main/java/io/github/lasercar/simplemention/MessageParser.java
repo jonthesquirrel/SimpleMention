@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 public class MessageParser {
 
@@ -12,15 +13,17 @@ public class MessageParser {
         return message.contains("@");
     }
 
-//    public Collection findMatches(String message) {
+//    public Collection findMentions(String message) {
 //        Pattern pattern = Pattern.compile("@(\\w+)");
 //        Matcher matcher = pattern.matcher(message);
 //
 //        return
 //    }
 
-//    public Collection getMatchingPlayers(String message) {
-//        Collection players = Bukkit.getOnlinePlayers();
-//    }
+    public Stream getMatchingPlayers(String str) {
+        return Bukkit.getOnlinePlayers().stream().filter(
+                p -> p.getPlayerListName().contains(str) || p.getDisplayName().contains(str)
+        );
+    }
 
 }
