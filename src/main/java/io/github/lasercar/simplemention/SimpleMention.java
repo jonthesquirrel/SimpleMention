@@ -27,9 +27,6 @@ public class SimpleMention extends JavaPlugin implements Listener {
         format_default = getConfig().getString("format-default");
 
         getServer().getPluginManager().registerEvents(this, this);
-
-        getLogger().info("format-mention: " + format_mention);
-        getLogger().info("format-default: " + format_default);
     }
 
     //events
@@ -42,14 +39,13 @@ public class SimpleMention extends JavaPlugin implements Listener {
             Player player = event.getPlayer();
             Collection onlinePlayers = Bukkit.getOnlinePlayers();
 
-//            getLogger().info(message);
+            Pattern pattern = Pattern.compile("(@\\w+)");
+            //make this^ looser and move checking to later if adding @/group formats
+            Matcher matcher = pattern.matcher(message);
 
-//            Pattern pattern = Pattern.compile("");
-//            Matcher matcher = pattern.matcher(message);
-
-//            while () {
-//
-//            }
+            while (matcher.find()) {
+                getLogger().info(matcher.group(1));
+            }
 
             //for @ matches, replace and ping
 
