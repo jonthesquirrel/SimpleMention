@@ -4,9 +4,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
+import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Stream;
 
 public class Listeners implements Listener {
 
@@ -15,6 +15,7 @@ public class Listeners implements Listener {
         String message = event.getMessage();
         StringBuffer messageBuffer = new StringBuffer();
 
+        //TODO: separate class for this
         if (MessageParser.hasMentions(message)) {
 
             Pattern pattern = Pattern.compile("@(\\w+)");
@@ -23,10 +24,10 @@ public class Listeners implements Listener {
             while (matcher.find()) {
                 String mention = matcher.group(1);
 
-                Stream players = PlayerMatcher.getMatches(mention);
+                Collection players = PlayerMatcher.findAllByName(mention);
 
-                if (players.Length > 0) {
-                    messageBuffer = MessageParser.highlight(message);
+                if (players.length > 0) {
+                    messageBuffer = MessageParser.highlightMention(mention);
                     SoundManager.pingPlayers(players);
                 }
 

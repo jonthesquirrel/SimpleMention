@@ -1,18 +1,21 @@
 package io.github.lasercar.simplemention;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
-import java.util.stream.Stream;
+import java.util.Collection;
+import java.util.stream.Collectors;
 
 public class PlayerMatcher {
 
-    public static Stream getMatches(String name) {
+    public static Collection<Player> findAllByName(String name) {
         String strLowercase = name.toLowerCase();
-        return Bukkit.getOnlinePlayers().stream().filter(
+        Collection players = Bukkit.getOnlinePlayers();
+        return players.stream().filter(
                 p -> p.getPlayerListName().toLowerCase().contains(strLowercase)
                         || p.getDisplayName().contains(strLowercase)
-        );
-        //TODO: return only the exact matched player if name matches exactly either username or displayname
+        ).collect(Collectors.toList());
+        //TODO: return only one player if name matches exactly either username or displayname
     }
 
 }

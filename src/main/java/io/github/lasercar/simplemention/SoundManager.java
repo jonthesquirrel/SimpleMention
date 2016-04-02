@@ -2,6 +2,7 @@ package io.github.lasercar.simplemention;
 
 import org.bukkit.entity.Player;
 
+import java.util.Collection;
 import java.util.stream.Stream;
 
 public class SoundManager {
@@ -10,7 +11,7 @@ public class SoundManager {
 
     }
 
-    public static void pingPlayers(Stream players) {
+    public static void pingPlayers(Collection<Player> players) {
         //TODO: for each player, pingPlayer()
     }
 

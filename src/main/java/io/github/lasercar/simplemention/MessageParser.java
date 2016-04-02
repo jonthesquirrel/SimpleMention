@@ -1,13 +1,5 @@
 package io.github.lasercar.simplemention;
 
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.Plugin;
-
-import java.util.Collection;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Stream;
-
 public class MessageParser {
 
     //TODO: config class?
@@ -25,8 +17,8 @@ public class MessageParser {
 //        return
 //    }
 
-//    public static StringBuffer highlight(String message) {
-//
-//    }
+    public static StringBuffer highlightMention(String mention) {
+        return formatMention + mention + formatDefault;
+    }
 
 }
