@@ -20,10 +20,4 @@ public class MessageParser {
 //        return
 //    }
 
-    public Stream getMatchingPlayers(String str) {
-        return Bukkit.getOnlinePlayers().stream().filter(
-                p -> p.getPlayerListName().contains(str) || p.getDisplayName().contains(str)
-        );
-    }
-
 }
