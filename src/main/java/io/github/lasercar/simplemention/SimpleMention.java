@@ -8,6 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 public class SimpleMention extends JavaPlugin implements Listener {
 
@@ -44,7 +45,7 @@ public class SimpleMention extends JavaPlugin implements Listener {
             while (matcher.find()) {
                 String mention = matcher.group(1);
 
-                List players = PlayerMatcher.findPartial(mention);
+                Stream players = PlayerMatcher.findPartial(mention);
 
                 //TODO: partial matching of display name and username
                 //TODO: only highlight mentions if found (prefix formatMention and suffix formatDefault)

@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 public class MessageParser {
 
-    public static final boolean hasMatches(String message) {
+    public static boolean hasMatches(String message) {
         return message.contains("@");
     }
 
