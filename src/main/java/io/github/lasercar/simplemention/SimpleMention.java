@@ -5,6 +5,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class SimpleMention extends JavaPlugin implements Listener {
 
     //init
@@ -33,17 +37,22 @@ public class SimpleMention extends JavaPlugin implements Listener {
         if (MessageParser.hasMatches(message)) {
             getLogger().info("has matches");
 //            Player player = event.getPlayer();
-//
-//            while (matcher.find()) {
-//                String match = matcher.group(1);
-//
-//                //TODO: partial matching of display name and username
-//                //TODO: only highlight mentions if found (prefix formatMention and suffix formatDefault)
-//
-//                //TODO: ping matched players with sound
-//            }
 
-//            event.setMessage(messageBuffer.toString());
+            Pattern pattern = Pattern.compile("@(\\w+)");
+            Matcher matcher = pattern.matcher(message);
+
+            while (matcher.find()) {
+                String mention = matcher.group(1);
+
+                List players = PlayerMatcher.findPartial(mention);
+
+                //TODO: partial matching of display name and username
+                //TODO: only highlight mentions if found (prefix formatMention and suffix formatDefault)
+
+                //TODO: ping matched players with sound
+            }
+
+            event.setMessage(messageBuffer.toString());
         }
     }
 

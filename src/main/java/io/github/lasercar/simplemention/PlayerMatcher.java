@@ -1,25 +1,26 @@
 package io.github.lasercar.simplemention;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class PlayerMatcher {
 
-    public static final Collection findExactMatches(String str) {
-        String input = str.toLowerCase();
+    public static final List<Player> findExact(String name) {
+        String strLowercase = name.toLowerCase();
         return Bukkit.getOnlinePlayers().stream().filter(
-                p -> p.getPlayerListName().toLowerCase().equals(input)
-                        || p.getDisplayName().toLowerCase().equals(input)
+                p -> p.getPlayerListName().toLowerCase().equals(strLowercase)
+                        || p.getDisplayName().toLowerCase().equals(strLowercase)
         ).collect(Collectors.toList());
     }
 
-    public static final Collection findPartialMatches(String str) {
-        String input = str.toLowerCase();
+    public static final List<Player> findPartial(String name) {
+        String strLowercase = name.toLowerCase();
         return Bukkit.getOnlinePlayers().stream().filter(
-                p -> p.getPlayerListName().toLowerCase().contains(input)
-                        || p.getDisplayName().contains(input)
+                p -> p.getPlayerListName().toLowerCase().contains(strLowercase)
+                        || p.getDisplayName().contains(strLowercase)
         ).collect(Collectors.toList());
     }
 
