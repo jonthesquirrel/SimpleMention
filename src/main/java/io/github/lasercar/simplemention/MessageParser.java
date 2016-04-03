@@ -1,13 +1,15 @@
 package io.github.lasercar.simplemention;
 
+import org.bukkit.ChatColor;
+
 public class MessageParser {
 
     //TODO: config class?
-//    String formatMention = config.getString("format-mention");
-//    String formatDefault = config.getString("format-default");
+//    String formatMention = ChatColor.translateAlternateColorCodes('&', config.getString("format-mention"));
+//    String formatDefault = ChatColor.translateAlternateColorCodes('&', config.getString("format-default"));
     //TEMP: hardcode
-    static String formatMention = "&e";
-    static String formatDefault = "&7";
+    static String formatMention = ChatColor.translateAlternateColorCodes('&', "&e");
+    static String formatDefault = ChatColor.translateAlternateColorCodes('&', "&7");
 
     public static boolean hasMentions(String message) {
         return message.contains("@");
