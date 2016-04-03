@@ -14,7 +14,7 @@ public class SimpleMention extends JavaPlugin {
         config.options().copyDefaults(true);
         saveConfig();
 
-        getServer().getPluginManager().registerEvents(new Listeners(), this);
+        getServer().getPluginManager().registerEvents(new Events(), this);
     }
 
 }

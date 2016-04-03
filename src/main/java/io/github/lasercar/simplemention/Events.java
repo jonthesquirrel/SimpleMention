@@ -8,7 +8,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Listeners implements Listener {
+public class Events implements Listener {
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event) {
