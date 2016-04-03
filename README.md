@@ -4,5 +4,5 @@
 
 @Mention in minecraft, with nickname, ping, and multiple mention support
 
-[Wiki](https://github.com/lasercar/SimpleMention/wiki)
-[Downloads](https://github.com/lasercar/SimpleMention/releases)
+- [**Downloads**](https://github.com/lasercar/SimpleMention/releases)
+- [**Wiki**](https://github.com/lasercar/SimpleMention/wiki)
