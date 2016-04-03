@@ -41,7 +41,14 @@ public class Events implements Listener {
 
     @EventHandler
     public void onTabComplete(PlayerChatTabCompleteEvent event) {
-        Bukkit.getLogger().info(event.toString());
+//        if (event.getLastToken().equals("@")) {
+//            event.getTabCompletions().push(Bukkit.getOnlinePlayers());
+//        }
+
+        //DEBUG
+        Bukkit.getLogger().info(event.getTabCompletions().toString());
+        event.getTabCompletions().clear();
+        Bukkit.getLogger().info(event.getTabCompletions().toString());
     }
 
 }
