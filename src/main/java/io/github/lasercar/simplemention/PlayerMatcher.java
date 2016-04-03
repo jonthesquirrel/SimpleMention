@@ -3,8 +3,6 @@ package io.github.lasercar.simplemention;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.util.Collection;
-
 public class PlayerMatcher {
 
     public static Player[] findAllByName(String name) {
