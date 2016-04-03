@@ -10,10 +10,6 @@ sourceSets.main.compileClasspath += configurations.providedCompile
 sourceSets.test.compileClasspath += configurations.providedCompile
 sourceSets.test.runtimeClasspath += configurations.providedCompile
 
-jar {
-
-}
-
 shadowJar{
     classifier = ""
 }
@@ -36,6 +32,7 @@ repositories {
 
 dependencies {
     providedCompile 'org.spigotmc:spigot-api:1.9-R0.1-SNAPSHOT'
+//    testCompile 'junit:junit:4.12'
 }
 
 buildscript {
