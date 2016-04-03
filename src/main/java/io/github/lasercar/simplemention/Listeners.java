@@ -15,20 +15,28 @@ public class Listeners implements Listener {
         String message = event.getMessage();
         StringBuffer messageBuffer = new StringBuffer();
 
-        MessageParser.iterateMentions(Function(String mention) {
+        //TODO: separate class for this
+        if (MessageParser.hasMentions(message)) {
 
+            Pattern pattern = Pattern.compile("@(\\w+)");
+            Matcher matcher = pattern.matcher(message);
 
-            Collection players = PlayerMatcher.findAllByName(mention);
+            while (matcher.find()) {
+                String mention = matcher.group(1);
 
-            if (players.length > 0) {
-                messageBuffer = MessageParser.highlightMention(mention);
-                SoundManager.pingPlayers(players);
+                Collection players = PlayerMatcher.findAllByName(mention);
+
+                if (players.length > 0) {
+                    messageBuffer = MessageParser.highlightMention(mention);
+                    SoundManager.pingPlayers(players);
+                }
+
+                //TODO: partial matching of display name and username
+
             }
 
-            //TODO: partial matching of display name and username
-        });
-
-        event.setMessage(messageBuffer.toString());
+            event.setMessage(messageBuffer.toString());
+        }
     }
 
 }
