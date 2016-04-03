@@ -28,13 +28,9 @@ public class Listeners implements Listener {
                 Player[] playersMatched = PlayerMatcher.findAllByName(mention);
 
                 if (playersMatched.length > 0) {
-                    //TODO
                     matcher.appendReplacement(messageBuffer, MessageParser.highlightMention(mention));
 
                     SoundManager.pingPlayers(playersMatched);
-
-                    //DEBUG
-                    Bukkit.broadcastMessage("players matched: " + playersMatched.toString());
                 }
             }
             matcher.appendTail(messageBuffer);
