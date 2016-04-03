@@ -1,6 +1,5 @@
 package io.github.lasercar.simplemention;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -27,7 +26,7 @@ public class Events implements Listener {
             while (matcher.find()) {
                 String mention = matcher.group(1);
 
-                Player[] playersMatched = PlayerMatcher.findAllByName(mention);
+                Player[] playersMatched = PlayerMatcher.findAllByPartialName(mention);
 
                 if (playersMatched.length > 0) {
                     matcher.appendReplacement(messageBuffer, MessageParser.highlightMention(mention));
@@ -45,12 +44,15 @@ public class Events implements Listener {
     public void onTabComplete(PlayerChatTabCompleteEvent event) {
         if (event.getLastToken().charAt(0) == '@') {
 
-            Set<String> names = new TreeSet<String>();
+            Set<String> names = new TreeSet<>();
+            String toComplete = event.getLastToken().substring(1);
 
-            for (Player player : Bukkit.getOnlinePlayers()) {
+            for (Player player : PlayerMatcher.findAllByPartialName(toComplete)) {
                 names.add("@" + player.getPlayerListName());
                 names.add("@" + MessageParser.removeFormatting(player.getDisplayName()));
             }
+
+            names.removeIf(name -> !name.toLowerCase().contains(toComplete.toLowerCase()));
 
             event.getTabCompletions().clear();
             event.getTabCompletions().addAll(names);

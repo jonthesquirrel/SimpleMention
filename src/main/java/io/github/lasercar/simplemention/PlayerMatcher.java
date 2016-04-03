@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 
 public class PlayerMatcher {
 
-    public static Player[] findAllByName(String name) {
+    public static Player[] findAllByPartialName(String name) {
         return Bukkit.getOnlinePlayers().stream().filter(
                 player -> player.getPlayerListName().toLowerCase().contains(name.toLowerCase())
                         || MessageParser.removeFormatting(player.getDisplayName().toLowerCase()).contains(name.toLowerCase())
