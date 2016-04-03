@@ -15,28 +15,35 @@ public class Listeners implements Listener {
         String message = event.getMessage();
 
         if (MessageParser.hasMentions(message)) {
-            String modifiedString = message;
-
-            org.bukkit.Bukkit.broadcastMessage("@ detected");
 
             Pattern pattern = Pattern.compile("@(\\w+)");
             Matcher matcher = pattern.matcher(message);
+            StringBuffer messageBuffer = new StringBuffer();
+
+            //DEBUG
+            org.bukkit.Bukkit.broadcastMessage("@ detected");
 
             while (matcher.find()) {
                 String mention = matcher.group(1);
 
+                //DEBUG
                 org.bukkit.Bukkit.broadcastMessage("mention found: " + mention);
 
                 Player[] playersMatched = PlayerMatcher.findAllByName(mention);
 
                 if (playersMatched.length > 0) {
-                    modifiedString = MessageParser.highlightMention(mention);
+                    //TODO
+                    matcher.appendReplacement(messageBuffer, MessageParser.highlightMention(mention));
+
                     SoundManager.pingPlayers(playersMatched);
+
+                    //DEBUG
                     org.bukkit.Bukkit.broadcastMessage("players matched: " + playersMatched.toString());
                 }
             }
+            matcher.appendTail(messageBuffer);
 
-            event.setMessage(modifiedString);
+            event.setMessage(messageBuffer.toString());
         }
     }
 
