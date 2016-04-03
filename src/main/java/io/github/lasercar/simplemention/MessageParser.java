@@ -5,11 +5,13 @@ import org.bukkit.ChatColor;
 public class MessageParser {
 
     //TODO: config class?
+//    String formatHandle = ChatColor.translateAlternateColorCodes('&', config.getString("format-handle"));
 //    String formatMention = ChatColor.translateAlternateColorCodes('&', config.getString("format-mention"));
-//    String formatDefault = ChatColor.translateAlternateColorCodes('&', config.getString("format-default"));
+//    String formatReset = ChatColor.translateAlternateColorCodes('&', config.getString("format-reset"));
     //TEMP: hardcode
-    static String formatMention = ChatColor.translateAlternateColorCodes('&', "&e");
-    static String formatDefault = ChatColor.translateAlternateColorCodes('&', "&7");
+    static String formatHandle = ChatColor.translateAlternateColorCodes('&', "&e");
+    static String formatMention = ChatColor.translateAlternateColorCodes('&', "&l");
+    static String formatReset = ChatColor.translateAlternateColorCodes('&', "&7");
 
     public static boolean hasMentions(String message) {
         return message.contains("@");
@@ -23,7 +25,7 @@ public class MessageParser {
 //    }
 
     public static String highlightMention(String mention) {
-        return formatMention + mention + formatDefault;
+        return formatHandle + "@" + formatMention + mention + formatReset;
     }
 
 }
