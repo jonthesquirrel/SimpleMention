@@ -5,6 +5,9 @@ public class MessageParser {
     //TODO: config class?
 //    String formatMention = config.getString("format-mention");
 //    String formatDefault = config.getString("format-default");
+    //TEMP: hardcode
+    static String formatMention = "&e";
+    static String formatDefault = "&7";
 
     public static boolean hasMentions(String message) {
         return message.contains("@");
@@ -17,7 +20,7 @@ public class MessageParser {
 //        return
 //    }
 
-    public static StringBuffer highlightMention(String mention) {
+    public static String highlightMention(String mention) {
         return formatMention + mention + formatDefault;
     }
 

@@ -8,13 +8,13 @@ import java.util.stream.Collectors;
 
 public class PlayerMatcher {
 
-    public static Collection<Player> findAllByName(String name) {
+    public static Player[] findAllByName(String name) {
         String strLowercase = name.toLowerCase();
-        Collection players = Bukkit.getOnlinePlayers();
-        return players.stream().filter(
+        return Bukkit.getOnlinePlayers().stream().filter(
                 p -> p.getPlayerListName().toLowerCase().contains(strLowercase)
                         || p.getDisplayName().contains(strLowercase)
-        ).collect(Collectors.toList());
+        ).toArray(Player[]::new);
+
         //TODO: return only one player if name matches exactly either username or displayname
     }
 

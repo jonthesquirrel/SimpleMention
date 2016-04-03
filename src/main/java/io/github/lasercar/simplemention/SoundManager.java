@@ -11,7 +11,7 @@ public class SoundManager {
 
     }
 
-    public static void pingPlayers(Collection<Player> players) {
+    public static void pingPlayers(Player[] players) {
         //TODO: for each player, pingPlayer()
     }
 

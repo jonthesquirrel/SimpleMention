@@ -1,5 +1,6 @@
 package io.github.lasercar.simplemention;
 
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
@@ -13,10 +14,10 @@ public class Listeners implements Listener {
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event) {
         String message = event.getMessage();
-        StringBuffer messageBuffer = new StringBuffer();
 
-        //TODO: separate class for this
+        //TODO: separate class for this?
         if (MessageParser.hasMentions(message)) {
+            String modifiedString = message;
 
             Pattern pattern = Pattern.compile("@(\\w+)");
             Matcher matcher = pattern.matcher(message);
@@ -24,18 +25,15 @@ public class Listeners implements Listener {
             while (matcher.find()) {
                 String mention = matcher.group(1);
 
-                Collection players = PlayerMatcher.findAllByName(mention);
+                Player[] playersMatched = PlayerMatcher.findAllByName(mention);
 
-                if (players.length > 0) {
-                    messageBuffer = MessageParser.highlightMention(mention);
-                    SoundManager.pingPlayers(players);
+                if (playersMatched.length > 0) {
+                    modifiedString = MessageParser.highlightMention(mention);
+                    SoundManager.pingPlayers(playersMatched);
                 }
-
-                //TODO: partial matching of display name and username
-
             }
 
-            event.setMessage(messageBuffer.toString());
+            event.setMessage(modifiedString);
         }
     }
 
