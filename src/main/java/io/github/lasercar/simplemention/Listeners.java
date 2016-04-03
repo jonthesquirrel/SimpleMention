@@ -20,14 +20,8 @@ public class Listeners implements Listener {
             Matcher matcher = pattern.matcher(message);
             StringBuffer messageBuffer = new StringBuffer();
 
-            //DEBUG
-            org.bukkit.Bukkit.broadcastMessage("@ detected");
-
             while (matcher.find()) {
                 String mention = matcher.group(1);
-
-                //DEBUG
-                org.bukkit.Bukkit.broadcastMessage("mention found: " + mention);
 
                 Player[] playersMatched = PlayerMatcher.findAllByName(mention);
 
