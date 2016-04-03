@@ -16,4 +16,8 @@ public class MessageParser {
         return formatHandle + "@" + formatMention + mention + formatReset;
     }
 
+    public static String removeFormatting(String str) {
+        return str.replaceAll("§\\w", "");
+    }
+
 }

@@ -49,7 +49,7 @@ public class Events implements Listener {
 
             for (Player player : Bukkit.getOnlinePlayers()) {
                 names.add("@" + player.getPlayerListName());
-                names.add("@" + player.getDisplayName());
+                names.add("@" + MessageParser.removeFormatting(player.getDisplayName()));
             }
 
             event.getTabCompletions().clear();
